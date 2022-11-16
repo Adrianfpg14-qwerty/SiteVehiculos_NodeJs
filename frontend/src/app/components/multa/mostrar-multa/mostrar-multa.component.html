@@ -1,0 +1,28 @@
+<div class="flex align-items-center justify-content-end bg-cyan-100">
+  <a pButton pRipple label="Crear Multas" icon="pi pi-user-plus" class="bg-cyan-600" [routerLink]="['/addmultas']"></a>
+</div>
+<div>
+  <p-toast></p-toast>
+</div>
+<p-table [value]="multas">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Consecutivo de Multa</th>
+      <th>Fecha y Hora</th>
+      <th>Lugar de Infracción</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-multas>
+    <tr>
+      <td>{{ multas.consecutivoDeMultas }}</td>
+      <td>{{ multas.fechaYHora }}</td>
+      <td>{{ multas.lugarInfracion }}</td>
+      <td>
+        <button pButton pRipple icon="pi pi-print" class="bg-cyan-600 mr-1" (click)="imprimir(multas.id)"></button>
+        <a pButton pRipple icon="pi pi-sync" class="bg-cyan-600 mr-1" [routerLink]="['/multas/edit', multas.id]"></a>
+        <button type="button" pButton pRipple icon="pi pi-eraser" class="bg-cyan-600 mr-1" (click)="eliminar(multas.id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

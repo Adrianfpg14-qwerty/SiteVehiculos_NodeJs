@@ -1,0 +1,28 @@
+<div class="flex align-items-center justify-content-end bg-cyan-100">
+  <a pButton pRipple label="Crear Vehiculos" icon="pi pi-user-plus" class="bg-cyan-600" [routerLink]="['/addvehiculos']"></a>
+</div>
+<div>
+  <p-toast></p-toast>
+</div>
+<p-table [value]="vehiculos">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Matricula</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-vehiculos>
+    <tr>
+      <td>{{ vehiculos.matricula }}</td>
+      <td>{{ vehiculos.marca }}</td>
+      <td>{{ vehiculos.modelos }}</td>
+      <td>
+        <button pButton pRipple icon="pi pi-print" class="bg-cyan-600 mr-1" (click)="imprimir(vehiculos.id)"></button>
+        <a pButton pRipple icon="pi pi-sync" class="bg-cyan-600 mr-1" [routerLink]="['/vehiculos/edit', vehiculos.id]"></a>
+        <button type="button" pButton pRipple icon="pi pi-eraser" class="bg-cyan-600 mr-1" (click)="eliminar(vehiculos.id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

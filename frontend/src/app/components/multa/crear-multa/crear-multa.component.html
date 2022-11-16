@@ -1,0 +1,45 @@
+<div>
+  <p-toast></p-toast>
+</div>
+<form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+  <div class="grid">
+    <div class="col-12 sm:col-6">
+      <div class="p-inputgroup mb-1">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText formControlName="consecutivoDeMultas" placeholder="consecutivoDeMultas" title="consecutivoDeMultas">
+      </div>
+    </div>
+
+    <div class="col-12 sm:col-6">
+      <div class="p-inputgroup mb-1 ">
+        <span class="p-inputgroup-addon"><i class="pi pi-wallet"></i></span>
+        <input type="date" pInputText formControlName="fechaYHora" placeholder="fechaYHora" title="fechaYHora">
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-12 sm:col-6">  
+      <div class="p-inputgroup mb-1 ">
+        <span class="p-inputgroup-addon"><i class="pi pi-comments"></i></span>
+        <input type="text" pInputText formControlName="lugarInfracion" placeholder="lugarInfracion" title="lugarInfracion">
+      </div>
+    </div>
+    <div class="col-12 sm:col-6">
+      <select formControlName="persona" >
+        <option [ngValue]="null" disabled>Seleccione Persona</option>
+        <option *ngFor="let persona of personas" [ngValue]="persona.id">{{persona.nombre}}</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="text-right">
+    <div class="col-12 sm:col-6">
+
+      <button pButton pRipple type="submit" icon="pi pi-check" label="Enviar" [disabled]="!form.valid" class="mt-4 mr-2"></button>
+      <button pButton pRipple type="button" icon="pi pi-times" label="Cancelar" class=" mr-2" (click)="cancel()"></button>
+
+    </div>
+  </div>
+</form>
